@@ -102,7 +102,7 @@ class Swimming(Training):
         return calories * self.COEF_CAL_7 * self.weight
 
 
-def read_package(workout_type: str, data: list[float]) -> Training:
+def read_package(workout_type: str, data: List[float]) -> Training:
     """Прочитать данные полученные от датчиков."""
     type_dict = {'SWM': Swimming, 'RUN': Running, 'WLK': SportsWalking}
     return type_dict[workout_type](*data)
