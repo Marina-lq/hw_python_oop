@@ -105,6 +105,9 @@ class Swimming(Training):
 def read_package(workout_type: str, data: List[float]) -> Training:
     """Прочитать данные полученные от датчиков."""
     type_dict = {'SWM': Swimming, 'RUN': Running, 'WLK': SportsWalking}
+    if workout_type not in type_dict:
+        raise ValueError('Неизвестная тренировка')
+
     return type_dict[workout_type](*data)
 
 
@@ -123,7 +126,4 @@ if __name__ == '__main__':
 
     for workout_type, data in packages:
         training = read_package(workout_type, data)
-        if training is None:
-            print('Тип тренировки не определен')
-        else:
-            main(training)
+        main(training)
